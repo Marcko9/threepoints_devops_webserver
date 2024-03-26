@@ -15,15 +15,3 @@ jobs:
     steps:
         - name: Pruebas de SAST
           run: echo "Ejecución de pruebas de SAST"
-        - name: Create new credentials file
-          uses: nowactions/envsubst@v1
-          with:
-            input: ./credentials.ini.tpl
-            output: ./credentials.ini   
-          run: |
-            export USERNAME=${USERNAME}
-            export PASSWORD=${PASSWORD}
-            envsubst < credentials.ini.tpl > /tmp/credentials.ini
-        - name: Build docker image
-          run: |
-            docker build -t devops_ws . --tag devops_ws_$(date +%s)
