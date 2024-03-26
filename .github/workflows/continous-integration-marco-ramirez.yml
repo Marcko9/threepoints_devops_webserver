@@ -15,3 +15,9 @@ jobs:
     steps:
         - name: Pruebas de SAST
           run: echo "Ejecución de pruebas de SAST"
+        - name: Create new credentials file
+          uses: nowactions/envsubst@v1
+          with:
+            input: ./credentials.ini.tpl
+            output: ./credentials.ini   
+
