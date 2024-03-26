@@ -21,5 +21,7 @@ jobs:
             input: ./credentials.ini.tpl
             output: ./credentials.ini   
         - name: List
-          run: ls -l
+          run: |
+            ls -l
+            pwd
 
