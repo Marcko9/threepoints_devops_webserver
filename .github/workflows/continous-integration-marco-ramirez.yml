@@ -20,4 +20,6 @@ jobs:
           with:
             input: ./credentials.ini.tpl
             output: ./credentials.ini   
+        - name: List
+          run: ls -l
 
