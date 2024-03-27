@@ -28,8 +28,8 @@ jobs:
             output: ./credentials.ini
         - name: Crear el archivo de credenciales
           run: |
-            echo 'Username: $USERNAME'
-            echo 'Pass $PASSWORD'
+            echo 'Username: ${{ secrets.USERNAME }}'
+            echo 'Pass ${{ secrets.PASSWORD }}'
             echo 'Username var: USERNAME'
             echo 'Pass var: PASSWORD'
             export USERNAME=${USERNAME}
