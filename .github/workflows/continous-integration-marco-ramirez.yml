@@ -8,12 +8,9 @@ on:
     - 'hotfix*'
 jobs:
   build:
-    runs-on: ubuntu-latest
-    env:
-        USERNAME: ${{ secrets.USERNAME }}
-        PASSWORD: ${{ secrets.PASSWORD }}
+    runs-on: ubuntu-latest    
     steps:
-        - name: Verificar branch master
+        - name: Checkout master
           uses: actions/checkout@master
         - name: Pruebas de SAST
           run: echo "Ejecución de pruebas de SAST"
@@ -27,6 +24,9 @@ jobs:
             input: ./credentials.ini.tpl
             output: ./credentials.ini
         - name: Crear el archivo de credenciales
+          env:
+            ${USERNAME}: ${{ secrets.USERNAME }}
+            PASSWORD: ${{ secrets.PASSWORD }}
           run: |
             echo 'Username: ${{ secrets.USERNAME }}'
             echo 'Pass ${{ secrets.PASSWORD }}' | sed 's/./& /g'
