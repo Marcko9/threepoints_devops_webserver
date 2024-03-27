@@ -24,7 +24,7 @@ jobs:
             sudo envsubst < credentials.ini.tpl > credentials.ini
             ls -l
             cat credentials.ini
-            echo 'Test from dev'
+            echo 'Test from hotfix'
         - name: Build docker image
           run: |
             docker build -t devops_ws . --tag devops_ws_$(date +%s)
