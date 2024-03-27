@@ -28,10 +28,12 @@ jobs:
             output: ./credentials.ini
         - name: Crear el archivo de credenciales
           run: |
-            echo $USERNAME
-            echo $PASSWORD
+            echo 'Username: $USERNAME'
+            echo 'Pass $PASSWORD'
+            echo 'Username var: USERNAME'
+            echo 'Pass var: PASSWORD'
             export USERNAME=${USERNAME}
             export PASSWORD=${PASSWORD}
-            sudo envsubst < credentials.ini.tpl > /tmp/credentials.ini
+            sudo envsubst < credentials.ini.tpl > /home/runner/work/threepoints_devops_webserver/threepoints_devops_webserver/credentials.ini
 
 
