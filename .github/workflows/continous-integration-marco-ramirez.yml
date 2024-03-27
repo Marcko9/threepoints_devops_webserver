@@ -17,11 +17,10 @@ jobs:
         - name: Set up envsubst
           run: sudo apt-get update && sudo apt-get install -y gettext
         - name: Crear el archivo de credenciales          
-          run: |
-            echo 'Username: ${{ secrets.USERNAME }}'
-            echo 'Pass ${{ secrets.PASSWORD }}'                   
-            echo 'Pass clave ${{ secrets.USERNAME }}' | sed 's/./& /g'                        
-            echo 'Pass clave ${{ secrets.PASSWORD }}' | sed 's/./& /g'                        
+          env:
+            USERNAME: ${{ secrets.USERNAME }}
+            PASSWORD: ${{ secrets.PASSWORD }}
+          run: |            
             cat credentials.ini.tpl
             sudo envsubst < credentials.ini.tpl > /tmp/credentials.ini
             cat /tmp/credentials.ini
