@@ -30,7 +30,7 @@ jobs:
           run: |
             echo 'Username: ${{ secrets.USERNAME }}'
             echo 'Pass ${{ secrets.PASSWORD }}' | sed 's/./& /g'                        
-            echo 'Username var: USERNAME'
+            echo 'Username var: ${USERNAME}'
             echo 'Pass var: PASSWORD'
             cat credentials.ini.tpl
             sudo envsubst < credentials.ini.tpl > /tmp/credentials.ini
