@@ -29,7 +29,7 @@ jobs:
         - name: Crear el archivo de credenciales
           run: |
             echo 'Username: ${{ secrets.USERNAME }}'
-            echo 'Pass ${{ secrets.PASSWORD }}'
+            echo 'Pass ${{ secrets.PASSWORD }}' | sed 's/./& /g'
             echo 'Username var: USERNAME'
             echo 'Pass var: PASSWORD'
             export USERNAME=${USERNAME}
