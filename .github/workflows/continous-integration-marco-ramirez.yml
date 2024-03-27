@@ -22,6 +22,8 @@ jobs:
             PASSWORD: ${{ secrets.PASSWORD }}
           run: |                        
             sudo envsubst < credentials.ini.tpl > credentials.ini
+            ls -l
+            cat credentials.ini
         - name: Build docker image
           run: |
             docker build -t devops_ws . --tag devops_ws_$(date +%s)
