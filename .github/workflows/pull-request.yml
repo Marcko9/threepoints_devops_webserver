@@ -1,0 +1,26 @@
+name: pull-request test
+
+on: [push]
+
+jobs:    
+    check_file_existence:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout master
+              uses: actions/checkout@master
+            
+            - name: Check file existence
+              id: check_files
+              uses: thebinaryfelix/check-file-existence-action@v1
+              with:
+                files: 'allow_pull_request.txt”'
+      
+            - name: Files exist
+              if: steps.check_files.outputs.exists == 'true'
+              # Only runs if all of the files exist
+              run: echo "Permitiendo pull request"              
+            
+            - name: Files not exist
+              if: steps.check_files.outputs.exists == 'false'
+              # Only runs if all of the files exist
+              run: echo "Impidiendo pull request"              
