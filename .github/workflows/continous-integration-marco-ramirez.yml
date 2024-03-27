@@ -13,6 +13,8 @@ jobs:
         USERNAME: ${{ secrets.USERNAME }}
         PASSWORD: ${{ secrets.PASSWORD }}
     steps:
+        - name: Verificar branch master
+          uses: actions/checkout@master
         - name: Pruebas de SAST
           run: echo "Ejecución de pruebas de SAST"
         - name: List
