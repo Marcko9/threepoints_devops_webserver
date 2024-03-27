@@ -23,8 +23,7 @@ jobs:
           with:
             input: ./credentials.ini.tpl
             output: ./credentials.ini
-        - name: Crear el archivo de credenciales
-          uses: nowactions/envsubst@v1
+        - name: Crear el archivo de credenciales          
           run: |
             echo 'Username: ${{ secrets.USERNAME }}'
             echo 'Pass ${{ secrets.PASSWORD }}'                   
