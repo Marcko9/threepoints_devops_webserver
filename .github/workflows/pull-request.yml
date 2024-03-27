@@ -8,19 +8,16 @@ jobs:
         steps:
             - name: Checkout master
               uses: actions/checkout@master
+            - name: Check if file exists
+              run: |
+                if [ -f ./allow_pull_request.txt ]; then
+                  echo "File exists."
+                  echo "Permitiendo pull request"  
+                  exit 0
+                else
+                  echo "File does not exist."
+                  echo "Impidiendo pull request"
+                  exit 1
+                fi
             
-            - name: Check file existence
-              id: check_files
-              uses: andstor/file-existence-action@v3
-              with:
-                files: 'allow_pull_request.txt'
-      
-            - name: Files exist
-              if: steps.check_files.outputs.exists == 'true'
-              # Only runs if all of the files exist
-              run: echo "Permitiendo pull request"              
             
-            - name: Files not exist
-              if: steps.check_files.outputs.exists == 'false'
-              # Only runs if all of the files exist
-              run: echo "Impidiendo pull request"              
