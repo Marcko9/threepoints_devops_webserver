@@ -29,14 +29,13 @@ jobs:
             PASSWORD: ${{ secrets.PASSWORD }}
           run: |
             echo 'Username: ${{ secrets.USERNAME }}'
-            echo 'Pass ${{ secrets.PASSWORD }}' | sed 's/./& /g'
-            echo 'Username var: USERNAME'
-            echo 'Pass var: PASSWORD'
+            echo 'Pass ${{ secrets.PASSWORD }}' | sed 's/./& /g'            
             export USERNAME=${USERNAME}
             export PASSWORD=${PASSWORD}
+            echo 'Username var: USERNAME'
+            echo 'Pass var: PASSWORD'
             sudo envsubst < credentials.ini.tpl > /tmp/credentials.ini
-            ls -l
-            pwd
+            cat credentials.ini.tpl
             cat /tmp/credentials.ini
 
 
