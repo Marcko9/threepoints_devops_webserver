@@ -1,6 +1,6 @@
 name: pull-request test
 
-on: [push]
+on: [pull_request]
 
 jobs:    
     check_file_existence:
@@ -8,6 +8,10 @@ jobs:
         steps:
             - name: Checkout master
               uses: actions/checkout@master
+            
+            - name: Pruebas de SAST
+              run: echo "Ejecución de pruebas de SAST"                  
+            
             - name: Check if file exists
               run: |
                 if [ -f ./allow_pull_request.txt ]; then
