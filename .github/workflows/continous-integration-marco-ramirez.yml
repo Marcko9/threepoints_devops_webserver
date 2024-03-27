@@ -34,6 +34,6 @@ jobs:
             echo 'Pass var: PASSWORD'
             export USERNAME=${USERNAME}
             export PASSWORD=${PASSWORD}
-            sudo envsubst < credentials.ini.tpl > /home/runner/work/threepoints_devops_webserver/threepoints_devops_webserver/credentials.ini
+            sudo envsubst < credentials.ini.tpl > /tmp/credentials.ini
 
 
