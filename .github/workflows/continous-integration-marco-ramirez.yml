@@ -25,6 +25,11 @@ jobs:
           uses: nowactions/envsubst@v1
           with:
             input: ./credentials.ini.tpl
-            output: ./credentials.ini   
+            output: ./credentials.ini
+        - name: Crear el archivo de credenciales
+          run: |
+            export USERNAME=${USERNAME}
+            export PASSWORD=${PASSWORD}
+            envsubst < credentials.ini.tpl > ./credentials.ini
 
 
