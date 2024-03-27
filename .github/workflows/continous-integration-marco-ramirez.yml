@@ -13,16 +13,9 @@ jobs:
         - name: Checkout master
           uses: actions/checkout@master
         - name: Pruebas de SAST
-          run: echo "Ejecución de pruebas de SAST"
-        - name: List
-          run: |
-            ls -l
-            pwd
-        - name: Create new credentials file
-          uses: nowactions/envsubst@v1
-          with:
-            input: ./credentials.ini.tpl
-            output: ./credentials.ini
+          run: echo "Ejecución de pruebas de SAST"        
+        - name: Set up envsubst
+          run: sudo apt-get update && sudo apt-get install -y gettext
         - name: Crear el archivo de credenciales          
           run: |
             echo 'Username: ${{ secrets.USERNAME }}'
