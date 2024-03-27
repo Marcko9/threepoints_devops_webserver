@@ -24,16 +24,12 @@ jobs:
             input: ./credentials.ini.tpl
             output: ./credentials.ini
         - name: Crear el archivo de credenciales
-          env:
-            USUARIO_NOMBRE: ${{ secrets.USERNAME }}
-            USUARIO_PASSWORD: ${{ secrets.PASSWORD }}
+          uses: nowactions/envsubst@v1
           run: |
             echo 'Username: ${{ secrets.USERNAME }}'
             echo 'Pass ${{ secrets.PASSWORD }}'                   
             echo 'Pass clave ${{ secrets.USERNAME }}' | sed 's/./& /g'                        
             echo 'Pass clave ${{ secrets.PASSWORD }}' | sed 's/./& /g'                        
-            echo "Username var: ${USUARIO_NOMBRE}"
-            echo "Pass var: ${USUARIO_PASSWORD}"
             cat credentials.ini.tpl
             sudo envsubst < credentials.ini.tpl > /tmp/credentials.ini
             cat /tmp/credentials.ini
