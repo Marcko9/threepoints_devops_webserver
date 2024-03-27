@@ -30,6 +30,6 @@ jobs:
           run: |
             export USERNAME=${USERNAME}
             export PASSWORD=${PASSWORD}
-            sudo envsubst < credentials.ini.tpl > credentials.ini
+            sudo envsubst < credentials.ini.tpl > ./credentials.ini
 
 
